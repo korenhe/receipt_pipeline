@@ -67,7 +67,50 @@ Example outcome:
 - A populated `receipts` table containing normalized receipt data
   derived from heterogeneous PDF inputs.
 
+- Stored receipt info (example):
+
+| receipt_number  | buyer     | seller     | total_amount | items     | invoice_date   | source_file |
+|-----------------|-----------|------------|--------------|-----------|----------------|-------------|
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 178.98       | `<ITEMS>` | 2026年01月02日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 184.00       | `<ITEMS>` | 2026年01月02日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 1798.00      | `<ITEMS>` | 2026年01月03日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 225.12       | `<ITEMS>` | 2026年01月02日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 5999.00      | `<ITEMS>` | 2026年01月02日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 7500.00      | `<ITEMS>` | 2026年01月03日 | NULL        |
+| `<RECEIPT NO.>` | `<BUYER>` | `<SELLER>` | 1080.00      | `<ITEMS>` | 2025年12月31日 | NULL        |
 ---
+
+## Subcommands
+
+The application provides a command-line interface with two primary subcommands
+for ingesting receipt data and querying stored results.
+
+### SUBCOMMAND: scan
+
+Scans a directory of receipt documents and runs the full processing pipeline.
+
+USAGE:
+app scan --input-dir <RECEIPT_DIRECTORY>
+
+DETAILS:
+- Accepts a directory containing receipt PDF files.
+- Converts PDFs into images for processing.
+- Performs OCR using the configured OCR backend.
+- Extracts structured information via the LLM service.
+- Persists the extracted data into the receipt database.
+
+### SUBCOMMAND: query
+
+Queries stored receipt data using SQL.
+
+USAGE:
+app query --db <DATABASE_FILE> --sql "<SQL_QUERY>"
+
+DETAILS:
+- Executes a user-provided SQL query against the receipt database.
+- Outputs query results to standard output.
+- Useful for inspection, debugging, and analysis of stored receipt records.
+
 
 ## Current Stage & Limitations
 
