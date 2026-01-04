@@ -15,6 +15,15 @@ and SQL storage).
 
 ---
 
+## Requirements
+
+- Linux environment
+- NVIDIA GPU with CUDA 13.0 runtime
+- Docker and Docker Compose
+- Running Ollama server with API access
+
+---
+
 ## Functionality
 
 The pipeline consists of the following stages:
@@ -50,6 +59,14 @@ The primary goals of this project are:
 - To provide a foundation for scalable receipt ingestion and analytics.
 - To serve as a learning and experimentation platform for systems programming,
   data engineering, and AI-assisted extraction.
+
+---
+
+## Non-Goals
+
+- This project is not a turnkey receipt recognition product.
+- It is not optimized for large-scale or production workloads.
+- Cloud deployment and multi-tenant scenarios are out of scope.
 
 ---
 
@@ -142,6 +159,11 @@ Known limitations and requirements:
 ---
 
 ## Status
+
+This project is in an early development stage.
+APIs, data schemas, and pipeline behavior may change.
+The current focus is on validating end-to-end integration
+rather than providing a production-ready solution.
 
 🚧 **Work in Progress**
 
